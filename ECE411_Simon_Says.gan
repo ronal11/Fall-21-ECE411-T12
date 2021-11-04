@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-10-28" view-index="0" gantt-divider-location="299" resource-divider-location="300" version="3.1.3103" locale="en_US">
+    <description/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Name" width="166" order="0"/>
+        <field id="tpd4" name="Begin date" width="65" order="1"/>
+        <field id="tpd5" name="End date" width="64" order="2"/>
+        <timeline>
+            <![CDATA[7,0]]>
+        </timeline>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Write Simon Says Code" color="#8cb6ce" meeting="false" start="2021-11-03" duration="4" complete="0" thirdDate="2021-11-03" thirdDate-constraint="1" expand="true">
+            <notes>
+                <![CDATA[Finish writing code for base game functionality. This means sending out a LED pattern and allowing user to input possible pattern. Being able to correctly identfy if pattern is correct or not and taking correct action (i.e. restarting or giving user another pattern)]]>
+            </notes>
+        </task>
+        <task id="67" name="Design Power Supply" color="#8cb6ce" meeting="false" start="2021-11-05" duration="2" complete="0" thirdDate="2021-11-01" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Design a 3.3v regulated power supply ]]>
+            </notes>
+        </task>
+        <task id="7" name="Start Rough Draft of CAD" color="#8cb6ce" meeting="false" start="2021-11-08" duration="4" complete="0" thirdDate="2021-11-02" thirdDate-constraint="0" expand="true"/>
+        <task id="56" name="Bill of Materials" color="#8cb6ce" meeting="false" start="2021-11-08" duration="4" complete="0" thirdDate="2021-11-02" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[A tentative list of all components needed for project]]>
+            </notes>
+        </task>
+        <task id="59" name="Functional Decompostion" color="#8cb6ce" meeting="false" start="2021-11-08" duration="4" complete="0" thirdDate="2021-11-03" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Level 0 (top level) and level 1 block diagram ]]>
+            </notes>
+        </task>
+        <task id="28" name="Test and Debug Simon Says code" color="#8cb6ce" meeting="false" start="2021-11-09" duration="2" complete="0" thirdDate="2021-11-08" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Make sure operation is as expected. Are seemingly random LED patterns are produced? Does game correctly accept input? Does the game end upon inputing an incorrect pattern and continue when its correct?]]>
+            </notes>
+        </task>
+        <task id="30" name="Implement/Test Code to Drive speaker" color="#8cb6ce" meeting="false" start="2021-11-11" duration="2" complete="0" thirdDate="2021-10-25" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Write driving code for Speaker and Test code on it's own before adding to main program.]]>
+            </notes>
+        </task>
+        <task id="41" name="Test Simon Says Code and Debug with Speaker Added" color="#8cb6ce" meeting="false" start="2021-11-12" duration="1" complete="0" thirdDate="2021-10-25" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Test main game code with the added speaker driving code. Making sure appropriate sounds are made after losing, winning, or when booting up game. All depending on how fancy we decide to get with sound. ]]>
+            </notes>
+        </task>
+        <task id="47" name="Extra Features?" color="#8cb6ce" meeting="false" start="2021-11-12" duration="1" complete="0" thirdDate="2021-10-25" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[This is the time to decide if there is time for any additions to the project (i.e. multiplayer gamemodes, ability to choose difficulty, etc.)]]>
+            </notes>
+        </task>
+        <task id="40" name="Review and Finalize CAD" color="#8cb6ce" meeting="false" start="2021-11-12" duration="4" complete="0" thirdDate="2021-10-25" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Fix any critical issues, make changes according to design review, go through checklists.]]>
+            </notes>
+        </task>
+        <task id="42" name="Test Operation with Power Supply" color="#8cb6ce" meeting="false" start="2021-11-18" duration="2" complete="0" thirdDate="2021-10-25" thirdDate-constraint="0" expand="true"/>
+        <task id="51" name="Transfer Components to PCB" color="#8cb6ce" meeting="false" start="2021-11-19" duration="2" complete="0" thirdDate="2021-10-25" thirdDate-constraint="0" expand="true"/>
+        <task id="62" name="Create a Test Plan" color="#8cb6ce" meeting="false" start="2021-11-23" duration="3" complete="0" thirdDate="2021-11-23" thirdDate-constraint="1" expand="true">
+            <notes>
+                <![CDATA[Create detailed test case descriptions for two tests included in your test plan.]]>
+            </notes>
+        </task>
+        <task id="70" name="Peform Test Plan" color="#8cb6ce" meeting="false" start="2021-11-26" duration="1" complete="0" thirdDate="2021-11-04" thirdDate-constraint="0" expand="true"/>
+        <task id="83" name="Any Debugging that may be necessary" color="#8cb6ce" meeting="false" start="2021-11-29" duration="4" complete="0" thirdDate="2021-11-16" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[Any bugs that may have risen from our test plans.]]>
+            </notes>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="Jonathan " function="Default:0" contacts="" phone=""/>
+        <resource id="1" name="Dang" function="Default:0" contacts="" phone=""/>
+        <resource id="2" name="Mousa" function="Default:0" contacts="" phone=""/>
+        <resource id="3" name="Ronaldo " function="Default:0" contacts="" phone=""/>
+    </resources>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
