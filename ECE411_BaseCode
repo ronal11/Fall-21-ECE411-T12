@@ -1,0 +1,87 @@
+
+//Red
+#define numLED1 22
+#define Plyer1 15     //plyerN_i = Push Button#
+//Orange
+#define numLED2 23
+#define Plyer2 17
+//Blue
+#define numLED3 25
+#define Plyer3 14
+//Yellow
+#define numLED4 26
+#define Plyer4 18
+
+  
+void setup() {
+  //Red  
+  pinMode(numLED1, OUTPUT);
+  pinMode(Plyer1, INPUT);
+  //Orange
+  pinMode(numLED2, OUTPUT);
+  pinMode(Plyer2, INPUT);
+  //Blue
+  pinMode(numLED3, OUTPUT);
+  pinMode(Plyer3, INPUT);
+  //Yellow
+  pinMode(numLED4, OUTPUT);
+  pinMode(Plyer4, INPUT);
+
+}
+
+void loop() {
+
+  int player1,player2,player3,player4;
+      
+   player1 = digitalRead(Plyer1);
+   player2 = digitalRead(Plyer2);
+   player3 = digitalRead(Plyer3);
+   player4 = digitalRead(Plyer4);
+
+  if( player1 == HIGH){
+
+    digitalWrite(numLED1, HIGH);
+    Serial.println("Red High");
+  }
+  else{
+
+    digitalWrite(numLED1, LOW);
+  }
+delay(100);
+  //2
+  if( player2 == HIGH){
+ Serial.begin(19200);
+  
+    digitalWrite(numLED2, HIGH);
+    Serial.println("Orange High");
+  }
+  else{
+
+    digitalWrite(numLED2, LOW);
+  }
+delay(100);
+  //3
+  if( player3 == HIGH){
+
+
+    digitalWrite(numLED3, HIGH);
+    Serial.println("Blue High");
+    return ;
+  }
+  else{
+
+    digitalWrite(numLED3, LOW);
+  }
+delay(100);
+  //4
+  if( player4 == HIGH){
+
+    digitalWrite(numLED4, HIGH);
+    Serial.println("Yellow High");
+  }
+  else{
+
+    digitalWrite(numLED4, LOW);
+  }
+
+}
