@@ -1,0 +1,222 @@
+const int MAX_LEVEL = 100;
+int sequence[MAX_LEVEL];        
+int your_sequence[MAX_LEVEL];   // buttons user pushes 
+int level = 4;                  // amount of leds in a pattern
+int gen = 0;        // indicates whether pattern has been generated
+
+//orange
+#define OR_LED 23               // led and button pinouts 
+#define OR_B 17     
+//red
+#define RED_LED 22
+#define RED_B 15
+//Blue
+#define BLUE_LED 25
+#define BLUE_B 14
+//Yellow
+#define YEL_LED 26
+#define YEL_B 18
+
+int velocity = 1000;            // speed of leds
+
+void setup() {
+
+    Serial.begin(9600);
+    pinMode(OR_B, INPUT);
+    pinMode(RED_B, INPUT);
+    pinMode(BLUE_B, INPUT);
+    pinMode(YEL_B, INPUT);
+
+    pinMode(OR_LED, OUTPUT);
+    pinMode(RED_LED, OUTPUT);
+    pinMode(BLUE_LED, OUTPUT);
+    pinMode(YEL_LED, OUTPUT);
+
+    digitalWrite(OR_LED, LOW);
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(BLUE_LED, LOW);
+    digitalWrite(YEL_LED, LOW);
+}
+
+void loop()
+{
+    
+    Serial.print("press red button to start\n");
+    if(gen == 0)
+    {       
+      Serial.print("generating pattern\n"); 
+      generate_sequence();//generate a sequence;
+      gen = 1;
+    }
+    
+    if (digitalRead(RED_B) == LOW) //If start button is pressed
+    {
+      Serial.print("game started\n");
+      show_sequence();    //show the sequence
+      get_sequence();     //wait for your sequence
+      gen = 0;
+    }
+    
+
+}
+
+void show_sequence()
+{
+    digitalWrite(OR_LED, LOW);
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(BLUE_LED, LOW);
+    digitalWrite(YEL_LED, LOW);
+    
+    for (int i = 0; i < level; i++)
+    {
+      if(sequence[i] == 1)
+      {
+        digitalWrite(RED_LED, HIGH);
+        delay(velocity);
+        digitalWrite(RED_LED, LOW);
+        delay(200);
+      }
+      if(sequence[i] == 2)
+      {
+        digitalWrite(OR_LED, HIGH);
+        delay(velocity);
+        digitalWrite(OR_LED, LOW);
+        delay(200);
+      }
+      if(sequence[i] == 3)
+      {
+        digitalWrite(YEL_LED, HIGH);
+        delay(velocity);
+        digitalWrite(YEL_LED, LOW);
+        delay(200);
+      }
+      if(sequence[i] == 4)
+      {
+        digitalWrite(BLUE_LED, HIGH);
+        delay(velocity);
+        digitalWrite(BLUE_LED, LOW);
+        delay(200);
+      }
+    }
+    
+}
+
+void get_sequence()
+{
+  int flag = 0; //this flag indicates if the sequence is correct
+
+  for (int i = 0; i < level; i++)
+  {
+    flag = 0;
+   while(flag == 0)
+   {
+   if (digitalRead(RED_B) == LOW)
+   {
+      digitalWrite(RED_LED, HIGH);
+      your_sequence[i] = 1;
+      flag = 1;
+      delay(200);
+    if (your_sequence[i] != sequence[i])
+    {
+      wrong_sequence();
+      return;
+    }
+    digitalWrite(RED_LED, LOW);
+    }
+
+    if (digitalRead(OR_B) == LOW)
+    {
+      digitalWrite(OR_LED, HIGH);
+      your_sequence[i] = 2;
+      flag = 1;
+      delay(200);
+      if (your_sequence[i] != sequence[i])
+      {
+        wrong_sequence();
+        return;
+      }
+      digitalWrite(OR_LED, LOW);
+    }
+
+    if (digitalRead(YEL_B) == LOW)
+    {
+      digitalWrite(YEL_LED, HIGH);
+      your_sequence[i] = 3;
+      flag = 1;
+      delay(200);
+      if (your_sequence[i] != sequence[i])
+      {
+      wrong_sequence();
+      return;
+      }
+      digitalWrite(3, LOW);
+    }
+
+   if (digitalRead(BLUE_B) == LOW)
+   {
+      digitalWrite(BLUE_LED, HIGH);
+      your_sequence[i] = 4;
+      flag = 1;
+      delay(200);
+    if (your_sequence[i] != sequence[i])
+    {
+      wrong_sequence();
+      return;
+    }
+    digitalWrite(BLUE_LED, LOW);
+    }
+
+   }
+  }
+  right_sequence();
+}
+
+void generate_sequence()
+{
+  randomSeed(millis()); //in this way is really random!!!
+   
+  for (int i = 0; i < level; i++)
+  {
+    sequence[i] = random(1,5);
+    Serial.println(sequence[i]);
+  }
+}
+void wrong_sequence()
+{
+  for (int i = 0; i < 3; i++)
+  {
+    digitalWrite(RED_LED, HIGH);
+    delay(250);
+    digitalWrite(RED_LED, LOW);
+  }
+  level = 1;
+  velocity = 1000;
+}
+
+void right_sequence()
+{
+   digitalWrite(RED_LED, LOW);
+   digitalWrite(OR_LED, LOW);
+   digitalWrite(YEL_LED, LOW);
+   digitalWrite(BLUE_LED, LOW);
+   delay(250);
+   
+  for(int i = 0; i < 3; i++)
+  { 
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(OR_LED, HIGH);
+    digitalWrite(YEL_LED, HIGH);
+    digitalWrite(BLUE_LED, HIGH);
+    delay(500);
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(OR_LED, LOW);
+    digitalWrite(YEL_LED, LOW);
+    digitalWrite(BLUE_LED, LOW);
+    delay(500);
+  }
+  if (level < MAX_LEVEL);
+    level++;
+
+  velocity -= 50; //increase difficulty
+}
+
