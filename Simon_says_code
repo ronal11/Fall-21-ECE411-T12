@@ -60,7 +60,7 @@ void loop()
       gen = 1;                                      // won't generate another sequence until user enters sequence
     }
     
-    if (digitalRead(RED_B) == LOW)                         //If start button is pressed(i.e red led button)...
+    if (digitalRead(RED_B) == HIGH || (level > 2))                         //If start button is pressed(i.e red led button)...
     {
       
       Serial.print("game started, showing sequence\n");
@@ -135,7 +135,7 @@ void get_sequence()                             // function receives input from 
    while(flag == 0)                             // waiting until we get button push from user 
    {
    
-   if (digitalRead(RED_B) == LOW)               // if first button is pushed 
+   if (digitalRead(RED_B) == HIGH)               // if first button is pushed 
    {
       Serial.print("Pressed red button turning on red led\n");
       digitalWrite(RED_LED, HIGH);                                          // turn on red led
@@ -149,7 +149,7 @@ void get_sequence()                             // function receives input from 
        digitalWrite(RED_LED, LOW);              // turn off led
     }
                                                 // from here on out structure of the code is the same for each led
-    if (digitalRead(OR_B) == LOW)               
+    if (digitalRead(OR_B) == HIGH)               
     {
       Serial.print("Pressed orange button turning on orange led\n");
       digitalWrite(OR_LED, HIGH);
@@ -162,7 +162,7 @@ void get_sequence()                             // function receives input from 
       digitalWrite(OR_LED, LOW);
     }
 
-    if (digitalRead(YEL_B) == LOW)
+    if (digitalRead(YEL_B) == HIGH)
     {
       Serial.print("Pressed yellow button turning on yellow led\n");
       digitalWrite(YEL_LED, HIGH);
@@ -176,7 +176,7 @@ void get_sequence()                             // function receives input from 
       digitalWrite(YEL_LED, LOW);
     }
 
-   if (digitalRead(BLUE_B) == LOW)
+   if (digitalRead(BLUE_B) == HIGH)
    {
       Serial.print("Pressed blue button turning on blue led\n");
       digitalWrite(BLUE_LED, HIGH);
@@ -247,7 +247,7 @@ void right_sequence()
   if (level < MAX_LEVEL);
     level++;                                  // increase number of leds in the next sequence 
 
-  velocity -= 200;                            // decreases length of time led stays on, increases difficulty         
+  velocity -= 50;                            // decreases length of time led stays on, increases difficulty         
 }
 
 bool comp_sequence()
@@ -271,4 +271,3 @@ bool comp_sequence()
   return true;                            // else return true
 
 }
-
